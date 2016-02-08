@@ -1,0 +1,6 @@
+name = "User Panels"
+description = "Allows to add some user page and form elements that is not provided by panels and ctools page manager."
+package = "User"
+core = 7.x
+dependencies[] = user
+dependencies[] = panels
