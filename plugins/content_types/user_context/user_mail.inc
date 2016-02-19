@@ -23,7 +23,7 @@ function user_panels_user_mail_content_type_render($subtype, $conf, $panel_args,
   }
 
   $build = array(
-    '#markup' => $account->mail,
+    '#markup' => "<a href='mailto:$account->mail'>" . $account->mail . '</a>',
   );
 
   $block = new stdClass();
