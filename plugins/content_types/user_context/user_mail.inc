@@ -32,7 +32,7 @@ function user_panels_user_mail_content_type_render($subtype, $conf, $panel_args,
   }
 
   // Take overriden title if any or set to Mail.
-  $title = !empty($conf['override_title']) ? filter_xss_admin($conf['override_title_text']) : t('Mail');
+  $title = !empty($conf['override_title']) ? filter_xss_admin($conf['override_title_text']) : t('Email');
 
   // Prepare field label.
   $label_markup = in_array($label, array('above', 'inline'))
