@@ -31,6 +31,14 @@ function user_panels_user_timezone_content_type_render($subtype, $conf, $panel_a
     // configuration.
     $timezone = variable_get('date_default_timezone', @date_default_timezone_get());
   }
+  // timezone module in enabled and timezone restriction in enabled,
+  // then use timezone custom label.
+  if (module_exists('timezone') && variable_get('timezone_restricted', 0)) {
+    $zonelist = timezone_get_configured_timezones();
+    if (isset($zonelist[$timezone]) && !empty($zonelist[$timezone])) {
+      $timezone = $zonelist[$timezone];
+    }
+  }
 
   $build = array(
     '#markup' => $timezone,
