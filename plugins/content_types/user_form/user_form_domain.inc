@@ -22,8 +22,8 @@ function user_panels_user_form_domain_content_type_render($subtype, $conf, $pane
 
   if (isset($context->form)) {
     $block->content = array();
-    $block->content['domain_user'] = isset($context->form['domain_user']) ? $context->form['domain_user'] : NULL;
-    unset($context->form['domain_user']);
+    $block->content['domain'] = isset($context->form['domain']) ? $context->form['domain'] : NULL;
+    unset($context->form['domain']);
   }
   else {
     $block->content = t('User form domain access.');
