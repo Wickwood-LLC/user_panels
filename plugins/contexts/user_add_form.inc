@@ -16,7 +16,7 @@ $plugin = array(
   'context' => 'ctools_context_create_user_add_form',
   'edit form' => 'ctools_context_user_add_form_settings_form',
   'defaults' => array('type' => 'user'),
-  'keyword' => 'user_add',
+  'keyword' => 'user_add_form',
   'context name' => 'user_add_form',
   'convert list' => array('type' => t('User type')),
   'convert' => 'ctools_context_user_add_form_convert',
@@ -32,7 +32,7 @@ $plugin = array(
  */
 function ctools_context_create_user_add_form($empty, $data = NULL, $conf = FALSE) {
   static $creating = FALSE;
-  $context = new ctools_context(array('form', 'user_add', 'user_form', 'entity:user'));
+  $context = new ctools_context(array('form', 'user_add', 'user_add_form', 'user_form', 'entity:user'));
   $context->plugin = 'user_add_form';
 
   if ($empty || ($creating)) {
@@ -51,9 +51,9 @@ function ctools_context_create_user_add_form($empty, $data = NULL, $conf = FALSE
     foreach($entity_info['bundles'] as $bundle_system_name => $bundle) {
       $types[] = $bundle_system_name;
     }
-    
+
     $type = str_replace('-', '_', $data);
-    
+
     $form_id = 'user_register_form';
     $form_state = array(
       'want form' => TRUE,
@@ -61,7 +61,7 @@ function ctools_context_create_user_add_form($empty, $data = NULL, $conf = FALSE
         'args' => array()
       )
     );
-    
+
     $form = drupal_build_form($form_id, $form_state);
     $context->data     = $form['#user'];
     $context->title    = "User add";
@@ -84,7 +84,7 @@ function ctools_context_create_user_add_form($empty, $data = NULL, $conf = FALSE
 
 function ctools_context_user_add_form_settings_form($form, &$form_state) {
   $conf = $form_state['conf'];
-  
+
   $types = array();
   $entity_info = entity_get_info('user');
   foreach($entity_info['bundles'] as $bundle_system_name => $bundle) {
